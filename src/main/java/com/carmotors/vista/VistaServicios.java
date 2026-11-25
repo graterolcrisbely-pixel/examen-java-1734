@@ -215,6 +215,12 @@ final class VistaServicios {
                 orden.fechaEntrega() == null ? "sin fecha" : orden.fechaEntrega().format(FECHA),
                 orden.costoManoObra() == null ? "sin registrar" : orden.costoManoObra().toPlainString());
         salida.println("Descripción: " + orden.descripcionProblema());
+        if (orden.descripcionProblema().startsWith("[URGENTE]")) {
+            salida.println("Prioridad: URGENTE");
+        } else {
+            salida.println("Prioridad: NORMAL");
+        }
+
     }
 
     private BigDecimal costoOpcional() {

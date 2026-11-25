@@ -68,7 +68,13 @@ public class ServicioDAO implements RepositorioConsultaOrdenServicio<Identificad
     @Override
     public List<Servicio> listar() {
         try (var conexion = ConexionFactory.obtenerConexion();
-             var sentencia = conexion.prepareStatement(CONSULTA + " ORDER BY id");
+             var sentencia = conexion.prepareStatement(CONSULTA + """
+          ORDER BY CASE
+           WHEN descripcion_problema LIKE '[URGENTE]%' THEN 0
+            ELSE 1
+        END,
+        fecha_recepcion ASC
+        """);
              var filas = sentencia.executeQuery()) {
             List<Servicio> servicios = new ArrayList<>();
             while (filas.next()) {
