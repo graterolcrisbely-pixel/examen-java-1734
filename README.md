@@ -1,3 +1,54 @@
+## Evaluación Java – Sistema de Citas con Cola de Prioridad
+
+### Objetivo
+
+Implementar un sistema de priorización de servicios para CarMotors, permitiendo atender primero las órdenes urgentes y organizarlas según su fecha de recepción, sin modificar la estructura de la base de datos.
+
+### Requisitos de la evaluación
+
+- Identificar los servicios urgentes mediante el prefijo `[URGENTE]`.
+- Mostrar únicamente los servicios pendientes.
+- Priorizar las órdenes urgentes sobre las normales.
+- Ordenar las órdenes por fecha de recepción ascendente.
+- Utilizar `ORDER BY CASE` en la consulta SQL.
+- Mantener la separación de responsabilidades entre las capas DAO, Service y Vista.
+- Mostrar la prioridad de los servicios en consola.
+
+### Cambios realizados
+
+**ServicioDAO.java**
+
+- Implementación del ordenamiento mediante `ORDER BY CASE`.
+- Identificación de servicios urgentes mediante `LIKE`.
+- Ordenamiento ascendente por fecha de recepción.
+
+**VistaServicios.java**
+
+- Modificación del método `mostrarOrden()` para incorporar la presentación de la prioridad.
+
+**Arquitectura**
+
+- Se conservó la estructura original del proyecto.
+- No se realizaron modificaciones en la estructura de la base de datos.
+
+### Estado de la implementación
+
+- Ordenamiento por prioridad implementado.
+- Ordenamiento por fecha implementado.
+- Filtro exclusivo de servicios pendientes por completar.
+- Visualización de prioridad pendiente de verificar.
+- Pruebas de funcionamiento pendientes de confirmar.
+
+### Control de versiones
+
+- Rama utilizada: `main`.
+- Commit de implementación: `fa565d6`.
+- Cambios enviados correctamente al repositorio remoto de GitHub.
+
+
+
+
+
 # CarMotors — Sistema de Gestión de Taller
 
 Proyecto académico de Zlatan Ricardo Villamizar Fajardo, Valeria, Crisbely y Marilud. Gestiona clientes, vehículos, órdenes, técnicos, inventario, proveedores, recordatorios y facturación.
